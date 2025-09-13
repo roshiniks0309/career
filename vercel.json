@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/__/auth/handler",
+        "destination": "https://my-app-5a87a.firebaseapp.com/__/auth/handler"
+      }
+    ]
+  }
+  

@@ -11,8 +11,10 @@ export const GoogleButton: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
+
       const user = await signInWithGoogleAndSave();
 
+      // Store in localStorage so AuthContext sees it
       const currentUser = {
         id: user.uid,
         email: user.email ?? '',
@@ -24,6 +26,7 @@ export const GoogleButton: React.FC = () => {
       };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
+      // Navigate + reload so state updates
       navigate('/');
       setTimeout(() => window.location.reload(), 200);
     } catch (e: any) {
