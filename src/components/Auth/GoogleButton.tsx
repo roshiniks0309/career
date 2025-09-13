@@ -27,8 +27,11 @@ export const GoogleButton: React.FC = () => {
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
       // Navigate + reload so state updates
-      navigate('/');
+      // Navigate to dashboard (not home)
+      navigate('/dashboard');
+      // Soft reload so AuthContext sees localStorage
       setTimeout(() => window.location.reload(), 200);
+
     } catch (e: any) {
       setError(e?.message ?? 'Google sign-in failed');
     } finally {
