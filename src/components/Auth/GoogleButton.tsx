@@ -12,9 +12,9 @@ export const GoogleButton: React.FC = () => {
       setLoading(true);
       setError(null);
 
+      // src/components/Auth/GoogleButton.tsx (only the success part changed)
       const user = await signInWithGoogleAndSave();
 
-      // Store in localStorage so AuthContext sees it
       const currentUser = {
         id: user.uid,
         email: user.email ?? '',
@@ -26,9 +26,9 @@ export const GoogleButton: React.FC = () => {
       };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
-      // Navigate + reload so state updates
-      // Navigate to dashboard (not home)
+      // Go straight to dashboard; no full reload needed
       navigate('/dashboard');
+
       // Soft reload so AuthContext sees localStorage
       setTimeout(() => window.location.reload(), 200);
 
